@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group = 'mail.alina'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.1'
+    testImplementation 'com.codeborne:selenide:7.7.3'
+
+}
+
+test {
+    useJUnitPlatform()
+}
