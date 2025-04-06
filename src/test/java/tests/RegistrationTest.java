@@ -20,7 +20,7 @@ public class RegistrationTest extends TestBase {
     @DisplayName("Проверка текстового поля с разными комбинациями данных")
     void testTextBoxWithDifferentData(String name, String email, String currentAddress,
                                       String permanentAddress) {
-        open("/text-box");
+        open("");
         $("#userName").setValue(name);
         $("#userEmail").setValue(email).pressEnter();
         $("#currentAddress").setValue(currentAddress).pressEnter();
