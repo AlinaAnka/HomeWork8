@@ -9,8 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import tests.data.AddressFieldType;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AddressTest extends TestBase {
 
@@ -19,7 +18,9 @@ public class AddressTest extends TestBase {
     @EnumSource(AddressFieldType.class)
     void testAddressFields(AddressFieldType addressField) {
 
-        open("");
+        open("/");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $(addressField.selector).setValue(addressField.testValue);
         $("#submit").click();
         $("#output").shouldHave(
@@ -32,7 +33,9 @@ public class AddressTest extends TestBase {
     @MethodSource("methodSourceExampleTest")
     void testAddressFields2(String selector, String fieldName, String testValue) {
 
-        open("");
+        open("/");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $(selector).setValue(testValue);
         $("#submit").click();
         $("#output").shouldHave(

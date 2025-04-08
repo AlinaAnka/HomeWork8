@@ -5,8 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class RegistrationTest extends TestBase {
@@ -20,7 +19,9 @@ public class RegistrationTest extends TestBase {
     @DisplayName("Проверка текстового поля с разными комбинациями данных")
     void testTextBoxWithDifferentData(String name, String email, String currentAddress,
                                       String permanentAddress) {
-        open("");
+        open("/");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#userName").setValue(name);
         $("#userEmail").setValue(email).pressEnter();
         $("#currentAddress").setValue(currentAddress).pressEnter();
